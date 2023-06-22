@@ -1,12 +1,29 @@
-import {View,Text} from 'react-native'
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+import OldTimesScreen from './Views/OldTimes';
+import MiddleTimesScreen from './Views/MiddleTimes';
+import NewTimesScreen from './Views/NewTimes';
+import NowadaysScreen from './Views/Nowadays';
+
+
+const Stack = createNativeStackNavigator();
 
 function TimeTravelScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Time Travel Screen</Text>
-      </View>
-    );
-  }
+  return (
+      <Stack.Navigator 
+      screenOptions={{headerShown:false}}  
+      initialRouteName='NowadaysScreen'
+    >
+        <Stack.Screen name="middleTimes" component={MiddleTimesScreen} />
+        <Stack.Screen name="oldTimes" component={OldTimesScreen}  />
 
-export default TimeTravelScreen;
+        <Stack.Screen name="newTimes" component={NewTimesScreen} />
+        <Stack.Screen name="nowadays" component={NowadaysScreen} />
+      </Stack.Navigator>
+  );
+}
+
+export default TimeTravelScreen
